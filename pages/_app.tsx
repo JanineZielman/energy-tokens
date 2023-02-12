@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.css";
 import Head from "next/head";
-import ThirdwebGuideFooter from "../components/ThirdwebGuideFooter";
 import { MagicConnector } from "@thirdweb-dev/react/evm/connectors/magic";
 
 // This is the chainId your dApp will work on.
@@ -43,7 +42,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-      <ThirdwebGuideFooter />
     </ThirdwebProvider>
   );
 }

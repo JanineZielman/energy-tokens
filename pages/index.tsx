@@ -3,6 +3,12 @@ import { useAddress, useDisconnect } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import { useMagic } from "@thirdweb-dev/react/evm/connectors/magic";
+import {
+  MediaRenderer,
+  useContract,
+  useContractMetadata,
+  Web3Button,
+} from "@thirdweb-dev/react";
 
 const Home: NextPage = () => {
   const address = useAddress(); // Hook to grab the currently connected user's address.
@@ -11,39 +17,29 @@ const Home: NextPage = () => {
 
   const [email, setEmail] = useState<string>(""); // State to hold the email address the user entered.
 
+  const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
+  const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
+
+  if (isLoading) {
+    return <div className={styles.container}>Loading...</div>;
+  }
+
+  console.log(contractMetadata)
+
   return (
     <>
       <div className={styles.container}>
-        <h1 className={styles.h1}>thirdweb + Magic.Link</h1>
-        <p className={styles.explain}>
-          Connect users to your dApp using their email or social media accounts
-          using{" "}
-          <b>
-            {" "}
-            <a
-              href="https://thirdweb.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.purple}
-            >
-              thirdweb
-            </a>
-          </b>{" "}
-          and{" "}
-          <b>
-            {" "}
-            <a
-              href="https://magic.link/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.purple}
-            >
-              Magic.Link
-            </a>
-          </b>
-          .
-        </p>
-        <hr className={styles.divider} />
+
+      <MediaRenderer
+        src={contractMetadata.image}
+        alt={contractMetadata.name}
+        style={{
+          width: "200px",
+        }}
+      />
+
+        <p>{contractMetadata.name}</p>
+        
 
         {address ? (
           <>
@@ -52,6 +48,14 @@ const Home: NextPage = () => {
             <a className={styles.mainButton} onClick={() => disconnectWallet()}>
               Disconnect Wallet
             </a>
+            <Web3Button
+              contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
+              action={(contract) => contract.erc721.claim(1)}
+              onSuccess={() => alert("Claimed!")}
+              onError={(error) => alert(error.message)}
+            >
+              Claim NFT
+            </Web3Button>
           </>
         ) : (
           <>
