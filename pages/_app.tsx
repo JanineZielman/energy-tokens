@@ -1,7 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import "./styles/globals.css";
+import "./styles/globals.scss";
 import Head from "next/head";
 import { MagicConnector } from "@thirdweb-dev/react/evm/connectors/magic";
 
@@ -30,16 +30,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
     >
       <Head>
-        <title>thirdweb Magic.Link Wallet Connector</title>
+        <title>Energy Tokens</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Learn How To Use Thirdweb's useMagic Hook To Connect User's To Your dApp Via Their Email, Phone Number, Or Social Media Account."
-        />
-        <meta
-          name="keywords"
-          content="Thirdweb, Magic, Magic.Link, Wallet Connector, Social Media Wallet Connector, Email Address Wallet Connector, Phone Number Wallet Connector"
-        />
       </Head>
       <Component {...pageProps} />
     </ThirdwebProvider>
