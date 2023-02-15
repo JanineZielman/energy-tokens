@@ -33,11 +33,12 @@ const Overview = () => {
       <div onClick={() => disconnectWallet()}>
         Disconnect Wallet
       </div>
-      {nfts.map((item, i) => {
+      {nfts?.map((item, i) => {
         return(
           <MediaRenderer
             src={item.metadata.image}
             alt={item.metadata.name}
+            key={`nft-${i}`}
             style={{
               width: "200px",
             }}
