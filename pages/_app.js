@@ -1,5 +1,4 @@
 import React from "react";
-import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.scss";
 import "./styles/breakpoints.scss";
@@ -21,7 +20,7 @@ const magicLinkConnector = new MagicConnector({
 // Array of wallet connectors you want to use for your dApp.
 const connectors = ["metamask", magicLinkConnector];
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider
       desiredChainId={activeChainId}

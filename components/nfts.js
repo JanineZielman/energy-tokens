@@ -24,38 +24,46 @@ const Nfts = ({address, contract, nfts}) => {
     <>
     {ownedNFTs?.length > 0 ?
       <div className="profile">
-        <h1>Your claimed NFT</h1>
-        <p>Continue the journey to create your storyline and unlock one other Energy Token by matching with another visitor.</p>
-        {ownedNFTs?.map((item, i) => {
-          return(
-            <div className={`claimed-nft`} key={`nft-owned-${i}`}>
-              <MediaRenderer
-                src={item.metadata.image}
-                alt={item.metadata.name}
-              />
-              <div className="nft-info">
-                <p>#{item.metadata.id}</p>
-                <p>{item.metadata.name}</p>
+        <div>
+          <h1>Your claimed NFT</h1>
+          <p>Continue the journey to create your storyline and unlock one other Energy Token by matching with another visitor.</p>
+        </div>
+        <div>
+          {ownedNFTs?.map((item, i) => {
+            return(
+              <div className={`claimed-nft`} key={`nft-owned-${i}`}>
+                <MediaRenderer
+                  src={item.metadata.image}
+                  alt={item.metadata.name}
+                />
+                <div className="nft-info">
+                  <p>#{item.metadata.id}</p>
+                  <p>{item.metadata.name}</p>
+                </div>
               </div>
-            </div>
-          )
-        })}
-        <h2>Continue <br/> journey</h2>
+            )
+          })}
+        </div>
+        <h2 className="continue">Continue <br/> journey</h2>
       </div>
     :
       <>
         {nfts?.map((item, i) => {
           return(
-            <div className={`nft-item ${ (item.owner == "0x0000000000000000000000000000000000000000") ? 'free' : 'owned'}`} key={`nft-${i}`}>
-              <MediaRenderer
-                src={item.metadata.image}
-                alt={item.metadata.name}
-              />
-              <div className="nft-info">
-                <p>#{item.metadata.id}</p>
-                <p>{item.metadata.name}</p>
+            <>
+            {item.metadata.image &&
+              <div className={`nft-item ${ (item.owner == "0x0000000000000000000000000000000000000000") ? 'free' : 'owned'}`} key={`nft-${i}`}>
+                <MediaRenderer
+                  src={item.metadata.image}
+                  alt={item.metadata.name}
+                />
+                <div className="nft-info">
+                  <p>#{item.metadata.id}</p>
+                  <p>{item.metadata.name}</p>
+                </div>
               </div>
-            </div>
+            }
+            </>
           )
         })}
       </>

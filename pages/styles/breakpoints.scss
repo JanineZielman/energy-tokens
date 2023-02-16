@@ -12,4 +12,18 @@
     border-right: none;
     border-top: 2px solid black;
   }
+  .profile{
+    height: calc(100vh - 320px);
+    p, h1{
+      margin-top: 5px;
+    }
+  }
+  .claimed-nft{
+    margin-top: 14px;
+    width: 50vw;
+    max-width: 200px;
+  }
+  .continue{
+    margin-top: 5px;
+  }
 }
