@@ -21,8 +21,11 @@ const Overview = ({address}) => {
 
   const [available, setAvailable] = useState(null);
 
-
-  
+  useEffect(() => {
+    if(nfts?.length > 1){
+      setAvailable(document.getElementsByClassName('free').length)
+    }
+  }, [nfts])
 
   if (isLoading2) {
     return <div>Loading...</div>;
@@ -30,12 +33,6 @@ const Overview = ({address}) => {
     console.log(nfts)
     console.log(address)
   }
-
-  useEffect(() => {
-    if(nfts?.length > 1){
-      setAvailable(document.getElementsByClassName('free').length)
-    }
-  }, [nfts])
 
   return (
     <div className="overview">
