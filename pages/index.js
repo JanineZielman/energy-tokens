@@ -4,6 +4,7 @@ import { useMagic } from "@thirdweb-dev/react/evm/connectors/magic";
 import {
   useContract,
   useContractMetadata,
+  useMetamask,
 } from "@thirdweb-dev/react";
 import Overview from "../components/overview";
 
@@ -16,6 +17,8 @@ const Index = () => {
 
   const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
   const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
+
+  const connectWithMetamask = useMetamask();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -30,7 +33,7 @@ const Index = () => {
       : 
         <div className="floating-nfts">
           <div className="gradient"></div>
-          <video id="bgVideo" preload="true" autoPlay loop muted>
+          <video id="bgVideo" preload="true" autoPlay loop muted playsInline>
             <source src="/nfts.mp4" type="video/mp4" /> 
           </video>
           <div className="step1">
@@ -44,6 +47,8 @@ const Index = () => {
             <div className="login-link" onClick={() => {connectWithMagic({ email });}}>
               <img src="/triangle.svg"/>
             </div>
+            <p>Or connect to your existing wallet using MetaMask:</p>
+            <div onClick={connectWithMetamask} className="meta-button">Connect Metamask</div>
           </div>
         </div>
       }

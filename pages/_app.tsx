@@ -19,7 +19,7 @@ const magicLinkConnector = new MagicConnector({
 });
 
 // Array of wallet connectors you want to use for your dApp.
-const connectors = [magicLinkConnector];
+const connectors = ["metamask", magicLinkConnector];
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -5,19 +5,21 @@ import {
   useContract,
   useContractMetadata,
   Web3Button,
-  useUnclaimedNFTs,
+  useOwnedNFTs,
   useNFTs
 } from "@thirdweb-dev/react";
+import Nfts from "./nfts";
 
 const Overview = ({address}) => {
 
   const disconnectWallet = useDisconnect(); // Hook to disconnect from the connected wallet.
   const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
-  const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
+  // const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
   const { data: nfts, isLoading2 } = useNFTs(nftDrop, {
     start: 0,
     count: 20,
   });
+
 
   const [available, setAvailable] = useState(null);
 
@@ -31,7 +33,6 @@ const Overview = ({address}) => {
     return <div>Loading...</div>;
   } else {
     console.log(nfts)
-    console.log(address)
   }
 
   return (
@@ -47,15 +48,17 @@ const Overview = ({address}) => {
             </div>
           </div>
           <br/>
-          <div className="available">There are <b>{available}</b> NFTs left.</div>
-          <Web3Button
-            contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
-            action={(contract) => contract.erc721.claim(1)}
-            onSuccess={() => alert("Claimed!")}
-            onError={(error) => alert(error.message)}
-          >
-            Claim 1 NFT
-          </Web3Button>
+          <div className="available">There are <b>{available}</b> NFTs left to claim.</div>
+          <div className="web3-button">
+            <Web3Button
+              contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
+              action={(contract) => contract.erc721.claim(1)}
+              onSuccess={() => alert("Claimed!")}
+              onError={(error) => alert(error.message)}
+            >
+              Claim 1 NFT
+            </Web3Button>
+          </div>
         </div>
         <footer>
           <img src="/logo.png"/>
@@ -63,20 +66,9 @@ const Overview = ({address}) => {
         </footer>
       </div>
       <div className="nft-grid">
-        {nfts?.map((item, i) => {
-          return(
-            <div className={`nft-item ${ (item.owner == "0x0000000000000000000000000000000000000000") ? 'free' : 'owned'}`} key={`nft-${i}`}>
-              <MediaRenderer
-                src={item.metadata.image}
-                alt={item.metadata.name}
-              />
-              <div className="nft-info">
-                <p>#{item.metadata.id}</p>
-                <p>{item.metadata.name}</p>
-              </div>
-            </div>
-          )
-        })}
+        {nfts &&
+          <Nfts address={address} contract={nftDrop} nfts={nfts}/>
+        }
       </div>
     </div>
   )
