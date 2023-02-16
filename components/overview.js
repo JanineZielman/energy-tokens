@@ -33,18 +33,23 @@ const Overview = () => {
       <div onClick={() => disconnectWallet()}>
         Disconnect Wallet
       </div>
-      {nfts?.map((item, i) => {
-        return(
-          <MediaRenderer
-            src={item.metadata.image}
-            alt={item.metadata.name}
-            key={`nft-${i}`}
-            style={{
-              width: "200px",
-            }}
-          />
-        )
-      })}
+      <div className="nft-grid">
+        {nfts?.map((item, i) => {
+          return(
+            <div className="nft-item">
+              <MediaRenderer
+                src={item.metadata.image}
+                alt={item.metadata.name}
+                key={`nft-${i}`}
+              />
+              <div className="nft-info">
+                <p>N{item.metadata.id}</p>
+                <p className="underline">Claim!</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
