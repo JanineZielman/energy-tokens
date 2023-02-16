@@ -25,7 +25,7 @@ const Index = () => {
     <div className="main">
       {address ? 
         <div>
-          <Overview/>
+          <Overview address={address}/>
         </div>
       : 
         <div className="floating-nfts">

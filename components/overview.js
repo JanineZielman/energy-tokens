@@ -9,7 +9,7 @@ import {
   useNFTs
 } from "@thirdweb-dev/react";
 
-const Overview = () => {
+const Overview = ({address}) => {
 
   const disconnectWallet = useDisconnect(); // Hook to disconnect from the connected wallet.
   const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
@@ -19,31 +19,63 @@ const Overview = () => {
     count: 20,
   });
 
+  const [available, setAvailable] = useState(null);
+
+
   
 
-  if (isLoading && isLoading2) {
+  if (isLoading2) {
     return <div>Loading...</div>;
   } else {
-    // const unclaimedNFTCount =  nftDrop.totalUnclaimedSupply();
     console.log(nfts)
+    console.log(address)
   }
+
+  useEffect(() => {
+    if(nfts?.length > 1){
+      setAvailable(document.getElementsByClassName('free').length)
+    }
+  }, [nfts])
 
   return (
     <div className="overview">
-      <div onClick={() => disconnectWallet()}>
-        Disconnect Wallet
+      <div className="sidebar">
+        <div className="info">
+          <h1>Energy Tokens</h1>
+          <p className="small">{address}</p>
+          <div className="flex">
+            <p>You're connected</p>
+            <div onClick={() => disconnectWallet()} className="button">
+              Disconnect Wallet
+            </div>
+          </div>
+          <br/>
+          <div className="available">There are <b>{available}</b> NFT's left.</div>
+          <Web3Button
+            contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
+            action={(contract) => contract.erc721.claim(1)}
+            onSuccess={() => alert("Claimed!")}
+            onError={(error) => alert(error.message)}
+          >
+            Claim 1 NFT
+          </Web3Button>
+        </div>
+        <footer>
+          <img src="/logo.png"/>
+          <p>© FramerFramed 2023</p>
+        </footer>
       </div>
       <div className="nft-grid">
         {nfts?.map((item, i) => {
           return(
-            <div className="nft-item" key={`nft-${i}`}>
+            <div className={`nft-item ${ (item.owner == "0x0000000000000000000000000000000000000000") ? 'free' : 'owned'}`} key={`nft-${i}`}>
               <MediaRenderer
                 src={item.metadata.image}
                 alt={item.metadata.name}
               />
               <div className="nft-info">
-                <p>N{item.metadata.id}</p>
-                <p className="underline">Claim!</p>
+                <p>#{item.metadata.id}</p>
+                <p>{item.metadata.name}</p>
               </div>
             </div>
           )

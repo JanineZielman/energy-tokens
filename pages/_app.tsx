@@ -2,6 +2,7 @@ import React from "react";
 import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.scss";
+import "./styles/breakpoints.scss";
 import Head from "next/head";
 import { MagicConnector } from "@thirdweb-dev/react/evm/connectors/magic";
 
