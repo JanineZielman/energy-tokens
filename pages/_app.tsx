@@ -10,7 +10,7 @@ const activeChainId = ChainId.Mumbai;
 
 const magicLinkConnector = new MagicConnector({
   options: {
-    apiKey: process.env.NEXT_PUBLIC_MAGIC_LINK_API_KEY as string,
+    apiKey: 'pk_live_AABDA8A837193648',
     rpcUrls: {
       [ChainId.Mumbai]: "https://rpc-mumbai.maticvigil.com",
     },
