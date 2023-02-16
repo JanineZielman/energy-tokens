@@ -41,13 +41,13 @@ const Overview = ({address}) => {
           <h1>Energy Tokens</h1>
           <p className="small">{address}</p>
           <div className="flex">
-            <p>You're connected</p>
+            <p>You are connected</p>
             <div onClick={() => disconnectWallet()} className="button">
               Disconnect Wallet
             </div>
           </div>
           <br/>
-          <div className="available">There are <b>{available}</b> NFT's left.</div>
+          <div className="available">There are <b>{available}</b> NFTs left.</div>
           <Web3Button
             contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
             action={(contract) => contract.erc721.claim(1)}
