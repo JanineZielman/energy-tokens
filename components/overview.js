@@ -36,11 +36,10 @@ const Overview = () => {
       <div className="nft-grid">
         {nfts?.map((item, i) => {
           return(
-            <div className="nft-item">
+            <div className="nft-item" key={`nft-${i}`}>
               <MediaRenderer
                 src={item.metadata.image}
                 alt={item.metadata.name}
-                key={`nft-${i}`}
               />
               <div className="nft-info">
                 <p>N{item.metadata.id}</p>
