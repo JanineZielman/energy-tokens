@@ -3,6 +3,7 @@
     width: 100%;
     height: calc(100vh - 320px);
     overflow-y: scroll;
+    min-height: calc(100vh - 320px);
   }
   .sidebar{
     width: calc(100% - 20px);

@@ -52,6 +52,7 @@ const Index = () => {
           </div>
         </div>
       }
+      <div className="info-icon"></div>
     </div>
   )
 }

@@ -59,6 +59,7 @@ h1{
     width: 90%;
     max-width: 600px;
     position: relative;
+    // display: none;
   }
   h1{
     font-weight: 100;
@@ -113,11 +114,13 @@ h1{
   justify-content: center;
   width: calc(100vw - 370px);
   margin: 0 0 0 auto;
+  align-items: center;
+  min-height: 100vh;
   .nft-item{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1vw;
+    margin: 3vw;
     -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.21);
     -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.21);
     box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.21);
@@ -162,6 +165,7 @@ h1{
   height: 100vh;
   justify-content: space-between;
   position: fixed;
+  z-index: 999;
   background-color: #F2F5F7;
   h1{
     margin: 0;
@@ -306,4 +310,40 @@ footer{
 
 .continue{
   cursor: pointer;
+}
+
+.info-icon{
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
+  width: 40px;
+  height: 40px;
+}
+
+.nft-grid{
+  .nft-item{
+    animation: animate 10s ease-in-out infinite;
+    height: fit-content;
+
+    &:nth-child(2n){
+      animation-delay: 1s;
+      margin-top: 24px;
+    }
+    &:nth-child(3n){
+      animation-delay: 1.5s;
+      margin-top: 48px;
+    }
+  }
+}
+
+@keyframes animate {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-30px);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
