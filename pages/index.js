@@ -15,7 +15,7 @@ const Index = () => {
 
   const [email, setEmail] = useState(""); // State to hold the email address the user entered.
 
-  const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
+  const { contract: nftDrop } = useContract("0x0D6EEdF9e6ea51cB57E120239be9758f39B3cD59");
   const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
 
   const connectWithMetamask = useMetamask();

@@ -6,13 +6,13 @@ import Head from "next/head";
 import { MagicConnector } from "@thirdweb-dev/react/evm/connectors/magic";
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mumbai;
+const activeChainId = ChainId.Polygon;
 
 const magicLinkConnector = new MagicConnector({
   options: {
-    apiKey: 'pk_live_AABDA8A837193648',
+    apiKey: 'pk_live_EF892CF7E931E7F6',
     rpcUrls: {
-      [ChainId.Mumbai]: "https://rpc-mumbai.maticvigil.com",
+      [ChainId.Polygon]: "https://polygon-rpc.com/",
     },
   },
 });
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
       desiredChainId={activeChainId}
       walletConnectors={connectors}
       chainRpc={{
-        [ChainId.Mumbai]: "https://rpc-mumbai.maticvigil.com",
+        [ChainId.Polygon]: "https://polygon-rpc.com/",
       }}
     >
       <Head>

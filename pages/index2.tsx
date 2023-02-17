@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
   const [email, setEmail] = useState<string>(""); // State to hold the email address the user entered.
 
-  const { contract: nftDrop } = useContract("0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74");
+  const { contract: nftDrop } = useContract("0x0D6EEdF9e6ea51cB57E120239be9758f39B3cD59");
   const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
 
   if (isLoading) {
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
               Disconnect Wallet
             </a>
             <Web3Button
-              contractAddress={"0x4847482bb4E3c108aF1f7b6f05499C2D4246fE74"}
+              contractAddress={"0x0D6EEdF9e6ea51cB57E120239be9758f39B3cD59"}
               action={(contract) => contract.erc721.claim(1)}
               onSuccess={() => alert("Claimed!")}
               onError={(error) => alert(error.message)}
