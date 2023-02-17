@@ -8,6 +8,7 @@ import {
   useOwnedNFTs,
   useNFTs
 } from "@thirdweb-dev/react";
+import Link from "next/link";
 
 const Nfts = ({address, contract, nfts}) => {
 
@@ -44,7 +45,7 @@ const Nfts = ({address, contract, nfts}) => {
             )
           })}
         </div>
-        <h2 className="continue">Continue <br/> journey</h2>
+        <Link href="/form"><h2 className="continue">Continue <br/> journey</h2></Link>
       </div>
     :
       <>

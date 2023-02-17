@@ -398,3 +398,15 @@ footer{
     font-size: 36px;
   }
 }
+
+.form-page{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.form{
+  height: 105vh;
+  width: 100vw;
+  filter: grayscale(1) contrast(1);
+}
