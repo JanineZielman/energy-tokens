@@ -7,6 +7,7 @@ import {
   useMetamask,
 } from "@thirdweb-dev/react";
 import Overview from "../components/overview";
+import Link from "next/link";
 
 const Index = () => {
 
@@ -52,7 +53,7 @@ const Index = () => {
           </div>
         </div>
       }
-      <div className="info-icon"></div>
+      <Link href="info"><a className="info-icon"></a></Link>
     </div>
   )
 }
