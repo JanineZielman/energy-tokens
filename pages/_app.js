@@ -28,6 +28,13 @@ function MyApp({ Component, pageProps }) {
       chainRpc={{
         [ChainId.Polygon]: "https://polygon-rpc.com/",
       }}
+      sdkOptions={{
+        gasless: {
+          openzeppelin: {
+            relayerUrl: "https://api.defender.openzeppelin.com/autotasks/c1a83afb-465f-40da-adfa-4290ea0c2417/runs/webhook/8b643b62-63ab-4c6f-88f8-3894e46e80ee/FGhUS32EVCGJMYHSbv3bvt",
+          },
+        },
+      }}
     >
       <Head>
         <title>Energy Tokens</title>
