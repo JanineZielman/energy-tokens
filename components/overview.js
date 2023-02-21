@@ -56,7 +56,7 @@ const Overview = ({address}) => {
               onSuccess={() => alert("Claimed!")}
               onError={(error) => alert(error.message)}
             >
-              Claim 1 NFT
+              Claim your NFT
             </Web3Button>
           </div>
         </div>

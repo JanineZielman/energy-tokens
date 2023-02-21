@@ -1,18 +1,12 @@
-import React, {useEffect, useState} from "react"
-import { useDisconnect } from "@thirdweb-dev/react";
+import React from "react"
 import {
   MediaRenderer,
-  useContract,
-  useContractMetadata,
-  Web3Button,
   useOwnedNFTs,
-  useNFTs
 } from "@thirdweb-dev/react";
 import Link from "next/link";
 
 const Nfts = ({address, contract, nfts}) => {
 
-  console.log(address)
   const { data: ownedNFTs, isLoading, error } = useOwnedNFTs(contract, address);
 
   if (isLoading) {
@@ -28,6 +22,7 @@ const Nfts = ({address, contract, nfts}) => {
         <div>
           <h1>Your claimed NFT</h1>
           <p>Continue the journey to create your storyline and unlock one other Energy Token by matching with another visitor.</p>
+          <Link href="/form"><h2 className="continue">Continue <br/> journey</h2></Link>
         </div>
         <div>
           {ownedNFTs?.map((item, i) => {
@@ -45,7 +40,6 @@ const Nfts = ({address, contract, nfts}) => {
             )
           })}
         </div>
-        <Link href="/form"><h2 className="continue">Continue <br/> journey</h2></Link>
       </div>
     :
       <>
