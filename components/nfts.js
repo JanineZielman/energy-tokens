@@ -10,9 +10,7 @@ const Nfts = ({address, contract, nfts}) => {
   const { data: ownedNFTs, isLoading, error } = useOwnedNFTs(contract, address);
 
   if (isLoading) {
-    return <div>Loading...</div>;
-  } else {
-    console.log(ownedNFTs)
+    return <div className="loading">Loading...</div>;
   }
 
   return (

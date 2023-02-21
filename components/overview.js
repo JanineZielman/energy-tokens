@@ -30,9 +30,7 @@ const Overview = ({address}) => {
   }, [nfts])
 
   if (isLoading2) {
-    return <div>Loading...</div>;
-  } else {
-    console.log(nfts)
+    return <div className="loading">Loading...</div>;
   }
 
   return (
