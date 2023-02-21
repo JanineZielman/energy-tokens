@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from "react"
 import { useDisconnect } from "@thirdweb-dev/react";
 import {
-  MediaRenderer,
   useContract,
-  useContractMetadata,
   Web3Button,
-  useOwnedNFTs,
   useNFTs
 } from "@thirdweb-dev/react";
 import Nfts from "./nfts";
@@ -24,7 +21,7 @@ const Overview = ({address}) => {
   const [available, setAvailable] = useState(null);
 
   useEffect(() => {
-    if(nfts?.length > 1){
+    if(nfts?.length >= 1){
       setAvailable(document.getElementsByClassName('free').length)
     }
   }, [nfts])
@@ -46,7 +43,7 @@ const Overview = ({address}) => {
             </div>
           </div>
           <br/>
-          <div className="available">There are <b>{available}</b> NFTs left to claim.</div>
+          {available ? <div className="available">There are <b>{available}</b> NFTs left to claim.</div> : '' }
           <div className="web3-button">
             <Web3Button
               contractAddress={"0x0D6EEdF9e6ea51cB57E120239be9758f39B3cD59"}
@@ -56,6 +53,7 @@ const Overview = ({address}) => {
             >
               Claim your NFT
             </Web3Button>
+            <div className="small-note">*Make sure your network is on the Polygon Mainnet!</div>
           </div>
         </div>
         <footer>
