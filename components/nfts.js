@@ -29,6 +29,7 @@ const Nfts = ({address, contract, nfts}) => {
                 <MediaRenderer
                   src={item.metadata.image}
                   alt={item.metadata.name}
+                  width={500}
                 />
                 <div className="nft-info">
                   <p>#{item.metadata.id}</p>
@@ -49,6 +50,7 @@ const Nfts = ({address, contract, nfts}) => {
                 <MediaRenderer
                   src={item.metadata.image}
                   alt={item.metadata.name}
+                  width={500}
                 />
                 <div className="nft-info">
                   <p>#{item.metadata.id}</p>
