@@ -10,7 +10,7 @@ import Nfts from "./nfts";
 const Overview = ({address}) => {
 
   const disconnectWallet = useDisconnect(); // Hook to disconnect from the connected wallet.
-  const { contract: nftDrop } = useContract("0xae40b9452b72ad13E2C4EF9283E37e2D0C13E9C0");
+  const { contract: nftDrop } = useContract("0x32ED95978e7306710D76450CeD64fdC3C505d7A9");
   // const { data: contractMetadata, isLoading } = useContractMetadata(nftDrop);
   const { data: nfts, isLoading2 } = useNFTs(nftDrop, {
     start: 0,
@@ -46,7 +46,7 @@ const Overview = ({address}) => {
           {available ? <div className="available">There are <b>{available}</b> NFTs left to claim.</div> : '' }
           <div className="web3-button">
             <Web3Button
-              contractAddress={"0xae40b9452b72ad13E2C4EF9283E37e2D0C13E9C0"}
+              contractAddress={"0x32ED95978e7306710D76450CeD64fdC3C505d7A9"}
               action={(contract) => contract.erc721.claim(1)}
               onSuccess={() => alert("Claimed!")}
               onError={(error) => alert(error.message)}
