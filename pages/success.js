@@ -8,7 +8,6 @@ const Index = () => {
     <div className="main success-page">
       <Link href="/" className="back">Go back to your gallery</Link>
       <h2>The match reveal will take place on Sunday 26th at 11 AM CET. Come back and explore your gallery to see if the match was successful</h2>
-      <h2><a href="/Collectors_rights.pdf">Collectors Rights</a></h2>
     </div>
   )
 }

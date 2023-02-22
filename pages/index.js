@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Index = () => {
 
-  const [pageLoading, setPageLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {

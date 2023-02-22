@@ -20,6 +20,7 @@ const Nfts = ({address, contract, nfts}) => {
         <div>
           <h1>Your claimed NFT</h1>
           <p>Continue the journey to create your storyline and unlock one other Energy Token by matching with another visitor.</p>
+          <p><a href="/Collectors_rights.pdf">Collectors Rights</a></p>
           <Link href="/form"><h2 className="continue">Continue <br/> journey</h2></Link>
         </div>
         <div>
