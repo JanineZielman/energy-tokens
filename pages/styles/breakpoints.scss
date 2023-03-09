@@ -31,4 +31,16 @@
   .form{
     height: 100vh;
   }
+  .message{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(242,245,247, 0.8);
+    z-index: 2;
+    width: 100%;
+    height: calc(100vh - 320px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

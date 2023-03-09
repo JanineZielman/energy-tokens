@@ -326,6 +326,7 @@ footer{
   border: 2px solid black;
   border-radius: 50%;
   text-decoration: none;
+  z-index: 999;
   &:after{
     content: 'i';
     font-size: 24px;
@@ -443,4 +444,20 @@ footer{
 .small-note{
   margin-top: 5px;
   font-size: 85%;
+}
+
+.message{
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: rgba(242,245,247, 0.8);
+  z-index: 2;
+  width: calc(100vw - 400px);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p{
+    text-align: center;
+  }
 }

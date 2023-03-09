@@ -43,6 +43,9 @@ const Nfts = ({address, contract, nfts}) => {
       </div>
     :
       <>
+        <div className="message">
+          <p>Everything has been claimed. <br/> See you next time!</p>
+        </div>
         {nfts?.map((item, i) => {
           return(
             <>
